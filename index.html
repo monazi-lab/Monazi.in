@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       background: #000;
@@ -17,10 +21,19 @@
       transition: background 2s ease;
     }
 
-    body.midnight { background: #050b18; }
-    body.end { background: #000; }
+    /* Midnight blue with subtle star texture */
+    body.midnight {
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 1px, transparent 1px),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(#050b18, #050b18);
+      background-size: 120px 120px, 180px 180px, 240px 240px, cover;
+    }
 
-    .gold { color: #d4af37; }
+    .gold {
+      color: #d4af37;
+    }
 
     .glow {
       color: #d4af37;
@@ -87,6 +100,7 @@
       transform: translateY(40px);
       transition: all 1.4s ease;
     }
+
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
@@ -107,7 +121,7 @@
 
 <body>
 
-<!-- 1. INTRO -->
+<!-- INTRO -->
 <section>
   <div class="container reveal">
     <h1 class="gold">MONAZI</h1>
@@ -119,7 +133,7 @@
   </div>
 </section>
 
-<!-- 2. SHARED DREAM -->
+<!-- SHARED DREAM -->
 <section>
   <div class="container reveal">
     <p>
@@ -134,7 +148,7 @@
   </div>
 </section>
 
-<!-- 3. KIND HEART -->
+<!-- KIND HEART -->
 <section>
   <div class="container reveal">
     <h2 class="gold">A Kind Heart</h2>
@@ -151,7 +165,7 @@
   </div>
 </section>
 
-<!-- 4. FREEDOM -->
+<!-- FREEDOM -->
 <section>
   <div class="container reveal">
     <h2 class="gold">Freedom</h2>
@@ -171,7 +185,7 @@
   </div>
 </section>
 
-<!-- 5. HIMALAYAS -->
+<!-- HIMALAYAS -->
 <section id="himalayas">
   <div class="container reveal">
     <h2 class="gold">The Himalayas</h2>
@@ -187,7 +201,7 @@
   </div>
 </section>
 
-<!-- 6. WHAT MONAZI IS -->
+<!-- WHAT MONAZI IS -->
 <section>
   <div class="container reveal">
     <h2 class="gold">What Monazi Really Is</h2>
@@ -209,7 +223,7 @@
   </div>
 </section>
 
-<!-- 7. PURPOSE -->
+<!-- PURPOSE -->
 <section>
   <div class="container reveal">
     <h2 class="gold">A World Worth Building</h2>
@@ -243,18 +257,26 @@
   function onScroll() {
     const h = window.innerHeight;
 
+    // reveal text
     reveals.forEach(el => {
       if (el.getBoundingClientRect().top < h - 100) {
         el.classList.add('active');
       }
     });
 
-    const himTop = himalayas.getBoundingClientRect().top;
-    if (himTop < h / 1.5) body.classList.add('midnight');
+    // Himalayas-based background toggle
+    const rect = himalayas.getBoundingClientRect();
+    const isVisible = rect.top < h * 0.7 && rect.bottom > h * 0.3;
 
+    if (isVisible) {
+      body.classList.add('midnight');
+    } else {
+      body.classList.remove('midnight');
+    }
+
+    // final line reveal
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
       footer.style.opacity = 1;
-      body.classList.add('end');
     }
   }
 
