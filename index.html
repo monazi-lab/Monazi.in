@@ -10,80 +10,73 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Segoe UI", Arial, sans-serif;
+      font-family: "Georgia", "Times New Roman", serif;
     }
 
     body {
       background: #000;
-      color: #f5f5f5;
-      line-height: 1.7;
+      color: #eaeaea;
+      line-height: 1.9;
     }
 
     .gold {
       color: #d4af37;
     }
 
-    header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 120px 24px;
     }
 
-    header h1 {
-      font-size: 3.2rem;
+    .title {
+      text-align: center;
+      margin-bottom: 120px;
+    }
+
+    .title h1 {
+      font-size: 3rem;
       letter-spacing: 6px;
       margin-bottom: 20px;
     }
 
-    header p {
-      max-width: 700px;
-      font-size: 1.05rem;
-      color: #ccc;
-      margin-bottom: 40px;
-    }
-
     .divider {
-      width: 80px;
+      width: 70px;
       height: 2px;
       background: #d4af37;
       margin: 30px auto;
     }
 
-    section {
-      padding: 90px 20px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
+    .letter {
+      font-size: 1.05rem;
+      color: #dcdcdc;
     }
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      letter-spacing: 2px;
+    .letter p {
+      margin-bottom: 60px;
     }
 
-    section p {
-      font-size: 1rem;
-      color: #bbb;
-      max-width: 800px;
-      margin: auto;
+    .signature {
+      margin-top: 120px;
+      text-align: right;
+      font-style: italic;
+      color: #c9c9c9;
     }
 
     footer {
       text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid #222;
+      margin-top: 140px;
       font-size: 0.85rem;
       color: #777;
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.4rem;
+      .title h1 {
+        font-size: 2.2rem;
+      }
+
+      .letter p {
+        margin-bottom: 45px;
       }
     }
   </style>
@@ -91,51 +84,76 @@
 
 <body>
 
-  <!-- HERO -->
-  <header>
-    <h1 class="gold">MONAZI</h1>
-    <div class="divider"></div>
-    <p>
-      This website is not about a brand.<br/>
-      It’s not about business.<br/><br/>
-      It is about a moment, a feeling,<br/>
-      and someone who matters deeply.
-    </p>
-  </header>
+  <div class="container">
 
-  <!-- STORY -->
-  <section>
-    <h2 class="gold">For Nazia</h2>
-    <p>
-      Nazia,<br/><br/>
-      I created this space quietly, patiently — not to impress the world,
-      but to surprise you.<br/><br/>
-      Every step, every idea, every late thought behind this website
-      carries a single intention: <br/>
-      to make you smile when you see it.<br/><br/>
-      Some things don’t need noise or explanations.
-      They just need honesty — and heart.
-    </p>
-  </section>
+    <!-- TITLE -->
+    <div class="title">
+      <h1 class="gold">MONAZI</h1>
+      <div class="divider"></div>
+      <p style="color:#999;">A private letter, meant for one person.</p>
+    </div>
 
-  <!-- MEANING -->
-  <section>
-    <h2 class="gold">Why This Exists</h2>
-    <p>
-      This website exists as a reminder —<br/>
-      that effort is love,<br/>
-      that patience is care,<br/>
-      and that some surprises are built,
-      not bought.<br/><br/>
-      Monazi is simply the name on the screen.
-      The real meaning is you.
-    </p>
-  </section>
+    <!-- LETTER CONTENT -->
+    <div class="letter">
 
-  <!-- FOOTER -->
-  <footer>
-    Created with intention. Reserved for one person only.
-  </footer>
+      <p>
+        Nazia,
+      </p>
+
+      <p>
+        I didn’t create this website to show it to the world.<br/>
+        I created it quietly — for you.
+      </p>
+
+      <p>
+        Somewhere between everyday routines and unspoken thoughts,
+        I wanted to do something different.
+        Something that couldn’t be forwarded, copied,
+        or explained in a few words.
+      </p>
+
+      <p>
+        So I built this space.
+        Slowly.
+        Thoughtfully.
+        With intention.
+      </p>
+
+      <p>
+        Every line here exists because you crossed my mind.
+        Every pause between words exists because
+        some feelings deserve silence around them.
+      </p>
+
+      <p>
+        This is not about perfection.
+        It’s about effort.
+        And effort is the most honest form of care I know.
+      </p>
+
+      <p>
+        If you’re reading this,
+        then the surprise worked —
+        and that alone makes this worth creating.
+      </p>
+
+      <p>
+        Some things are better felt than explained.
+        This is one of them.
+      </p>
+
+      <div class="signature">
+        — Created only for you
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      This page was never meant for everyone.
+    </footer>
+
+  </div>
 
 </body>
 </html>
