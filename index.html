@@ -42,6 +42,7 @@
       font-size: 3.2rem;
       letter-spacing: 6px;
       margin-bottom: 25px;
+      animation: goldGlow 6s ease-in-out infinite;
     }
 
     h2 {
@@ -75,17 +76,28 @@
       color: #777;
     }
 
-    /* subtle fade animation */
-    .fade {
+    /* ===== ANIMATIONS ===== */
+
+    .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1.6s ease forwards;
+      transform: translateY(40px);
+      transition: all 1.4s ease;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes goldGlow {
+      0% {
+        text-shadow: 0 0 0 rgba(212,175,55,0.0);
+      }
+      50% {
+        text-shadow: 0 0 12px rgba(212,175,55,0.35);
+      }
+      100% {
+        text-shadow: 0 0 0 rgba(212,175,55,0.0);
       }
     }
 
@@ -102,9 +114,9 @@
 
 <body>
 
-  <!-- SECTION 1 : DREAM -->
+  <!-- SECTION 1 -->
   <section>
-    <div class="container fade">
+    <div class="container reveal">
       <h1 class="gold">MONAZI</h1>
       <div class="divider"></div>
       <p class="soft">
@@ -114,13 +126,13 @@
     </div>
   </section>
 
-  <!-- SECTION 2 : THE IDEA -->
+  <!-- SECTION 2 -->
   <section>
-    <div class="container fade">
+    <div class="container reveal">
       <p>
         Monazi is not a website.<br/>
         It is a dream that slowly took shape —<br/>
-        a dream that belongs to *both of us*.
+        a dream that belongs to both of us.
       </p>
 
       <p>
@@ -130,16 +142,15 @@
     </div>
   </section>
 
-  <!-- SECTION 3 : HER HEART -->
+  <!-- SECTION 3 -->
   <section>
-    <div class="container fade">
+    <div class="container reveal">
       <h2 class="gold">A Kind Heart</h2>
       <div class="divider"></div>
 
       <p>
         I’ve seen how your heart leans toward kindness.<br/>
-        How you think about people who have less,<br/>
-        how helping the poor and the needy<br/>
+        How helping the poor and the needy<br/>
         feels natural to you — not forced.
       </p>
 
@@ -150,61 +161,55 @@
     </div>
   </section>
 
-  <!-- SECTION 4 : FREEDOM -->
+  <!-- SECTION 4 -->
   <section>
-    <div class="container fade">
+    <div class="container reveal">
       <h2 class="gold">Freedom</h2>
       <div class="divider"></div>
 
       <p>
-        You’ve always wanted space —<br/>
-        not distance, but freedom.
+        You’ve always wanted freedom —<br/>
+        not distance, but space to breathe.
       </p>
 
       <p>
-        To breathe without permission.<br/>
-        To choose your own sky.<br/>
-        To fly without restrictions.
+        To fly without restrictions.<br/>
+        To choose your own sky.
       </p>
 
       <p>
-        And I believe real care never cages.<br/>
+        Real care never cages.<br/>
         It walks beside.
       </p>
     </div>
   </section>
 
-  <!-- SECTION 5 : HIMALAYAS -->
+  <!-- SECTION 5 -->
   <section>
-    <div class="container fade">
+    <div class="container reveal">
       <h2 class="gold">The Himalayas</h2>
       <div class="divider"></div>
 
       <p>
-        Some people dream of destinations.<br/>
         You dream of silence, mountains,<br/>
         and places where the soul feels lighter.
       </p>
 
       <p>
         The Himalayas are not just a place.<br/>
-        They are a feeling — calm, powerful, free.
+        They are a feeling — calm and powerful.
       </p>
     </div>
   </section>
 
-  <!-- SECTION 6 : WHY MONAZI -->
+  <!-- SECTION 6 -->
   <section>
-    <div class="container fade">
+    <div class="container reveal">
       <h2 class="gold">Why This Exists</h2>
       <div class="divider"></div>
 
       <p>
-        I created Monazi for one simple reason.
-      </p>
-
-      <p>
-        To impress you — yes.<br/>
+        I created Monazi to impress you — yes.<br/>
         But more than that,<br/>
         to earn your trust.
       </p>
@@ -216,27 +221,44 @@
     </div>
   </section>
 
-  <!-- SECTION 7 : TRUST -->
+  <!-- SECTION 7 -->
   <section>
-    <div class="container fade">
+    <div class="container reveal">
       <p>
-        Trust is not asked for.<br/>
-        It is built — quietly.
+        Trust is built quietly.<br/>
+        With patience.<br/>
+        With respect.
       </p>
 
       <p>
-        This website is my way of saying:<br/>
-        I am serious enough to build,<br/>
-        patient enough to wait,<br/>
-        and respectful enough to let you choose.
+        This is my way of saying:<br/>
+        I’m serious enough to build,<br/>
+        and gentle enough to wait.
       </p>
     </div>
   </section>
 
-  <!-- END -->
   <footer>
     Monazi — a shared dream, created with intention.
   </footer>
+
+  <!-- SCROLL ANIMATION SCRIPT -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+      const windowHeight = window.innerHeight;
+      reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
 
 </body>
 </html>
