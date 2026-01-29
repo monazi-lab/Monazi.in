@@ -76,8 +76,7 @@
       color: #777;
     }
 
-    /* ===== ANIMATIONS ===== */
-
+    /* Animations */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -90,229 +89,226 @@
     }
 
     @keyframes goldGlow {
-      0% {
-        text-shadow: 0 0 0 rgba(212,175,55,0.0);
-      }
-      50% {
-        text-shadow: 0 0 12px rgba(212,175,55,0.35);
-      }
-      100% {
-        text-shadow: 0 0 0 rgba(212,175,55,0.0);
-      }
+      0% { text-shadow: none; }
+      50% { text-shadow: 0 0 12px rgba(212,175,55,0.35); }
+      100% { text-shadow: none; }
+    }
+
+    /* Interactive buttons */
+    .choice {
+      background: transparent;
+      border: 1px solid #d4af37;
+      color: #d4af37;
+      padding: 12px 28px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .choice:hover {
+      background: #d4af37;
+      color: #000;
+    }
+
+    #result {
+      font-size: 1.05rem;
+      color: #d0d0d0;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2.4rem;
-      }
-      h2 {
-        font-size: 1.6rem;
-      }
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.6rem; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- SECTION 1 -->
-  <section>
-    <div class="container reveal">
-      <h1 class="gold">MONAZI</h1>
-      <div class="divider"></div>
-      <p class="soft">
-        Some dreams don’t begin with plans.<br/>
-        They begin quietly — with a feeling.
-      </p>
-    </div>
-  </section>
-
-  <!-- SECTION 2 -->
-  <section>
-    <div class="container reveal">
-      <p>
-        Monazi is not a website.<br/>
-        It is a dream that slowly took shape —<br/>
-        a dream that belongs to both of us.
-      </p>
-
-      <p>
-        A space where thoughts breathe freely.<br/>
-        Where intentions matter more than promises.
-      </p>
-    </div>
-  </section>
-
-  <!-- SECTION 3 -->
-  <section>
-    <div class="container reveal">
-      <h2 class="gold">A Kind Heart</h2>
-      <div class="divider"></div>
-
-      <p>
-        I’ve seen how your heart leans toward kindness.<br/>
-        How helping the poor and the needy<br/>
-        feels natural to you — not forced.
-      </p>
-
-      <p>
-        That kind of heart doesn’t need to be praised.<br/>
-        It only needs to be respected.
-      </p>
-    </div>
-  </section>
-
-  <!-- SECTION 4 -->
-  <section>
-    <div class="container reveal">
-      <h2 class="gold">Freedom</h2>
-      <div class="divider"></div>
-
-      <p>
-        You’ve always wanted freedom —<br/>
-        not distance, but space to breathe.
-      </p>
-
-      <p>
-        To fly without restrictions.<br/>
-        To choose your own sky.
-      </p>
-
-      <p>
-        Real care never cages.<br/>
-        It walks beside.
-      </p>
-    </div>
-  </section>
-
-  <!-- SECTION 5 -->
-  <section>
-    <div class="container reveal">
-      <h2 class="gold">The Himalayas</h2>
-      <div class="divider"></div>
-
-      <p>
-        You dream of silence, mountains,<br/>
-        and places where the soul feels lighter.
-      </p>
-
-      <p>
-        The Himalayas are not just a place.<br/>
-        They are a feeling — calm and powerful.
-      </p>
-    </div>
-  </section>
-  
-  <!-- FINAL MOTIVATION -->
+<!-- 1. INTRO -->
 <section>
   <div class="container reveal">
-    <h2 class="gold">A World Worth Building</h2>
+    <h1 class="gold">MONAZI</h1>
     <div class="divider"></div>
-
-    <p>
-      Dreams don’t end with feelings.<br/>
-      They begin with purpose.
-    </p>
-
-    <p>
-      I imagine a world where kindness is not optional.<br/>
-      Where the poor and the needy are not forgotten,<br/>
-      but supported — with dignity, not sympathy.
-    </p>
-
-    <p>
-      A world where we build something meaningful,<br/>
-      not just for ourselves,<br/>
-      but for those who need it the most.
-    </p>
-
-    <p>
-      I imagine us building our work with honesty,<br/>
-      growing a business that stands on values,<br/>
-      not shortcuts.
-    </p>
-
-    <p>
-      And somewhere between effort and silence,<br/>
-      we take time to breathe —
-    </p>
-
-    <p>
-      To travel into the Himalayas,<br/>
-      where noise fades,<br/>
-      where freedom feels real,<br/>
-      and the soul remembers what matters.
-    </p>
-
     <p class="soft">
-      This is not a promise.<br/>
-      It’s a direction.
-    </p>
-
-    <p class="soft">
-      If paths ever align,<br/>
-      this is the kind of world I want to build —
-      patiently, honestly, together.
+      Some dreams don’t begin with plans.<br/>
+      They begin quietly — with a feeling.
     </p>
   </div>
 </section>
 
-  <!-- SECTION 6 -->
-  <section>
-    <div class="container reveal">
-      <h2 class="gold">Why This Exists</h2>
-      <div class="divider"></div>
+<!-- 2. SHARED DREAM -->
+<section>
+  <div class="container reveal">
+    <p>
+      Monazi is not a website.<br/>
+      It is a dream that slowly took shape —
+      a dream that belongs to both of us.
+    </p>
+    <p>
+      A space where thoughts breathe freely,<br/>
+      where intention matters more than promises.
+    </p>
+  </div>
+</section>
 
-      <p>
-        I created Monazi to impress you — yes.<br/>
-        But more than that,<br/>
-        to earn your trust.
-      </p>
+<!-- 3. KIND HEART -->
+<section>
+  <div class="container reveal">
+    <h2 class="gold">A Kind Heart</h2>
+    <div class="divider"></div>
+    <p>
+      Your heart leans naturally toward kindness.<br/>
+      Toward helping the poor and the needy —
+      not for praise, but because it feels right.
+    </p>
+    <p>
+      That kind of heart doesn’t need admiration.<br/>
+      It deserves respect.
+    </p>
+  </div>
+</section>
 
-      <p>
-        Not with words that disappear,<br/>
-        but with effort you can see.
-      </p>
+<!-- 4. FREEDOM -->
+<section>
+  <div class="container reveal">
+    <h2 class="gold">Freedom</h2>
+    <div class="divider"></div>
+    <p>
+      You’ve always wanted freedom —<br/>
+      not distance, but space to breathe.
+    </p>
+    <p>
+      To fly without restrictions.<br/>
+      To choose your own sky.
+    </p>
+    <p>
+      Real care never cages.<br/>
+      It walks beside.
+    </p>
+  </div>
+</section>
+
+<!-- 5. HIMALAYAS -->
+<section>
+  <div class="container reveal">
+    <h2 class="gold">The Himalayas</h2>
+    <div class="divider"></div>
+    <p>
+      You dream of silence, mountains,<br/>
+      and places where the soul feels lighter.
+    </p>
+    <p>
+      The Himalayas are not just a destination.<br/>
+      They are a feeling — calm, powerful, free.
+    </p>
+  </div>
+</section>
+
+<!-- 6. WHAT MONAZI IS -->
+<section>
+  <div class="container reveal">
+    <h2 class="gold">What Monazi Really Is</h2>
+    <div class="divider"></div>
+    <p>
+      Monazi is a name we give to something deeper —
+      a shared vision, a way of seeing the world,
+      and the belief that something meaningful can be built.
+    </p>
+    <p>
+      A world where work carries purpose,<br/>
+      where success never forgets kindness,<br/>
+      and where growth includes others — not just ourselves.
+    </p>
+    <p>
+      If one day Monazi becomes a business,<br/>
+      it will not begin with profit,<br/>
+      but with values —
+      honesty, care, and responsibility.
+    </p>
+    <p class="soft">
+      Monazi is not defined by what we create.<br/>
+      It is defined by who we choose to become.
+    </p>
+  </div>
+</section>
+
+<!-- 7. INTERACTIVE MOMENT -->
+<section>
+  <div class="container reveal">
+    <h2 class="gold">One Last Question</h2>
+    <div class="divider"></div>
+    <p>
+      If this dream means something to you,<br/>
+      what would you like to do with it?
+    </p>
+
+    <div id="choices">
+      <button class="choice" onclick="showResult(1)">I want to understand it slowly</button><br/><br/>
+      <button class="choice" onclick="showResult(2)">I feel something, but I need time</button><br/><br/>
+      <button class="choice" onclick="showResult(3)">This touched my heart</button>
     </div>
-  </section>
 
-  <!-- SECTION 7 -->
-  <section>
-    <div class="container reveal">
-      <p>
-        Trust is built quietly.<br/>
-        With patience.<br/>
-        With respect.
-      </p>
+    <div id="result" style="display:none; margin-top:60px;"></div>
+  </div>
+</section>
 
-      <p>
-        This is my way of saying:<br/>
-        I’m serious enough to build,<br/>
-        and gentle enough to wait.
-      </p>
-    </div>
-  </section>
+<!-- 8. MOTIVATION -->
+<section>
+  <div class="container reveal">
+    <h2 class="gold">A World Worth Building</h2>
+    <div class="divider"></div>
+    <p>
+      Dreams don’t end with feelings.<br/>
+      They begin with purpose.
+    </p>
+    <p>
+      A world where the poor and the needy are not forgotten,<br/>
+      where business is built with honesty,<br/>
+      and growth carries responsibility.
+    </p>
+    <p>
+      And somewhere between effort and silence,<br/>
+      we travel into the Himalayas —
+      to breathe, to reflect, to feel free.
+    </p>
+    <p class="soft">
+      This is not a promise.<br/>
+      It’s a direction.
+    </p>
+  </div>
+</section>
 
-  <footer>
-    Monazi — a shared dream, created with intention.
-  </footer>
+<footer>
+  Monazi — a shared dream, created with intention.
+</footer>
 
-  <!-- SCROLL ANIMATION SCRIPT -->
-  <script>
-    const reveals = document.querySelectorAll('.reveal');
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  function revealOnScroll() {
+    const h = window.innerHeight;
+    reveals.forEach(el => {
+      if (el.getBoundingClientRect().top < h - 100) {
+        el.classList.add('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
 
-    function revealOnScroll() {
-      const windowHeight = window.innerHeight;
-      reveals.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
-          el.classList.add('active');
-        }
-      });
-    }
+  function showResult(choice) {
+    const r = document.getElementById("result");
+    const c = document.getElementById("choices");
+    c.style.display = "none";
+    r.style.display = "block";
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-  </script>
+    if (choice === 1)
+      r.innerHTML = "<p>Patience is a beautiful choice.<br/>Some dreams deserve time.</p>";
+    if (choice === 2)
+      r.innerHTML = "<p>Taking time is honesty.<br/>I respect that completely.</p>";
+    if (choice === 3)
+      r.innerHTML = "<p>If this touched your heart,<br/>creating it was worth everything.</p>";
+  }
+</script>
 
 </body>
 </html>
