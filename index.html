@@ -5,7 +5,7 @@
   <title>Monazi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google Font -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -16,10 +16,32 @@
     }
 
     body {
-      background: #000;
-      color: #eaeaea;
       font-family: 'Inter', sans-serif;
+      background: #f6f5f2; /* light premium tone */
+      color: #222;
       overflow-x: hidden;
+    }
+
+    /* Animated background */
+    .bg-shape {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
+      border-radius: 50%;
+      filter: blur(40px);
+      animation: float 18s infinite ease-in-out;
+      z-index: -1;
+    }
+
+    .bg1 { top: -150px; left: -150px; }
+    .bg2 { bottom: -150px; right: -150px; animation-delay: 6s; }
+    .bg3 { top: 40%; left: 60%; animation-delay: 12s; }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-40px); }
+      100% { transform: translateY(0px); }
     }
 
     /* HEADER */
@@ -27,19 +49,20 @@
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 24px 32px;
+      padding: 22px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(246,245,242,0.85);
+      backdrop-filter: blur(6px);
       z-index: 10;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
     }
 
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.6rem;
       letter-spacing: 4px;
-      color: #d4af37;
+      color: #b89b3c;
     }
 
     /* HERO */
@@ -49,52 +72,51 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 0 20px;
+      padding: 120px 20px 80px;
     }
 
     .hero-content {
-      max-width: 800px;
-      animation: fadeUp 1.8s ease forwards;
+      max-width: 780px;
+      animation: fadeUp 1.6s ease forwards;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3.4rem;
-      margin-bottom: 20px;
+      font-size: 3.2rem;
       line-height: 1.2;
+      margin-bottom: 18px;
     }
 
     .hero h1 span {
-      color: #d4af37;
-    }
-
-    .hero p {
-      font-size: 1.05rem;
-      color: #bdbdbd;
-      margin-bottom: 40px;
-      line-height: 1.8;
+      color: #b89b3c;
     }
 
     .divider {
-      width: 90px;
+      width: 80px;
       height: 2px;
-      background: #d4af37;
-      margin: 0 auto 40px;
+      background: #b89b3c;
+      margin: 24px auto;
     }
 
-    /* SECTION */
+    .hero p {
+      font-size: 1.02rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* SECTIONS */
     section {
-      padding: 140px 22px;
+      padding: 110px 22px;
       display: flex;
       justify-content: center;
       text-align: center;
     }
 
     .section-content {
-      max-width: 900px;
+      max-width: 880px;
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 1.4s ease;
+      transform: translateY(30px);
+      transition: all 1.3s ease;
     }
 
     .section-content.active {
@@ -104,19 +126,20 @@
 
     section h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      margin-bottom: 30px;
+      font-size: 2.1rem;
+      margin-bottom: 18px;
+      color: #222;
     }
 
     section p {
-      font-size: 1rem;
-      color: #c9c9c9;
-      line-height: 1.9;
+      font-size: 0.98rem;
+      color: #555;
+      line-height: 1.7;
     }
 
     /* FOOTER */
     footer {
-      padding: 100px 20px;
+      padding: 80px 20px;
       text-align: center;
       font-size: 0.9rem;
       color: #777;
@@ -126,7 +149,7 @@
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(25px);
       }
       to {
         opacity: 1;
@@ -137,17 +160,22 @@
     /* RESPONSIVE */
     @media (max-width: 600px) {
       .hero h1 {
-        font-size: 2.4rem;
+        font-size: 2.3rem;
       }
 
       section h2 {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Animated Background Shapes -->
+  <div class="bg-shape bg1"></div>
+  <div class="bg-shape bg2"></div>
+  <div class="bg-shape bg3"></div>
 
   <!-- HEADER -->
   <header>
@@ -158,14 +186,13 @@
   <div class="hero">
     <div class="hero-content">
       <h1>
-        Something <span>Meaningful</span><br/>
+        Something <span>Important</span><br/>
         Is Taking Shape
       </h1>
       <div class="divider"></div>
       <p>
-        This space is intentionally quiet right now.<br/>
-        Not because nothing is happening —
-        but because something important is being built.
+        This space is intentionally calm. Not because nothing is happening,
+        but because something meaningful is being built with focus and care.
       </p>
     </div>
   </div>
@@ -173,12 +200,11 @@
   <!-- SECTION 1 -->
   <section>
     <div class="section-content reveal">
-      <h2>This Is Only The Beginning</h2>
+      <h2>This Is Just The Start</h2>
       <p>
-        Monazi is being shaped with patience and purpose.
-        Every decision, every detail, every direction
-        is chosen carefully — not to impress quickly,
-        but to last.
+        Monazi is being shaped with patience and clarity.
+        Every decision is intentional, designed to last,
+        not to impress for a moment.
       </p>
     </div>
   </section>
@@ -186,13 +212,11 @@
   <!-- SECTION 2 -->
   <section>
     <div class="section-content reveal">
-      <h2>Built With Intention</h2>
+      <h2>Built With Purpose</h2>
       <p>
-        What’s coming here is not rushed.
-        It’s not copied.
-        And it’s not created for attention alone.<br/><br/>
-        It’s being built to stand for something —
-        values, responsibility, and a larger vision.
+        What’s coming here is thoughtful and grounded.
+        It’s not rushed, not copied, and not created for noise.
+        It’s being built to stand for something meaningful.
       </p>
     </div>
   </section>
@@ -202,16 +226,15 @@
     <div class="section-content reveal">
       <h2>Stay Curious</h2>
       <p>
-        This page will change.<br/>
-        When it does, it will mean
-        the next chapter is ready to be revealed.
+        This page will evolve. When it does,
+        it will signal the beginning of the next chapter.
       </p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    Monazi — quietly building something that matters.
+    Monazi — quietly preparing something that matters.
   </footer>
 
   <!-- SCROLL REVEAL SCRIPT -->
