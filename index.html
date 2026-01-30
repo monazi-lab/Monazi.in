@@ -5,6 +5,9 @@
   <title>Monazi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -15,274 +18,218 @@
     body {
       background: #000;
       color: #eaeaea;
-      font-family: "Georgia", "Times New Roman", serif;
-      line-height: 1.9;
+      font-family: 'Inter', sans-serif;
       overflow-x: hidden;
-      transition: background 2s ease;
     }
 
-    /* Midnight blue with subtle star texture */
-    body.midnight {
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 1px, transparent 1px),
-        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.05) 1px, transparent 1px),
-        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(#050b18, #050b18);
-      background-size: 120px 120px, 180px 180px, 240px 240px, cover;
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
     }
 
-    .gold {
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      letter-spacing: 4px;
       color: #d4af37;
     }
 
-    .glow {
-      color: #d4af37;
-      text-shadow: 0 0 10px rgba(212,175,55,0.35);
-    }
-
-    section {
+    /* HERO */
+    .hero {
       min-height: 100vh;
-      padding: 120px 22px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
       text-align: center;
+      padding: 0 20px;
     }
 
-    h1 {
-      font-size: 3.2rem;
-      letter-spacing: 6px;
-      margin-bottom: 25px;
-      animation: goldGlow 6s ease-in-out infinite;
+    .hero-content {
+      max-width: 800px;
+      animation: fadeUp 1.8s ease forwards;
     }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      letter-spacing: 2px;
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
     }
 
-    p {
+    .hero h1 span {
+      color: #d4af37;
+    }
+
+    .hero p {
       font-size: 1.05rem;
-      color: #d0d0d0;
+      color: #bdbdbd;
       margin-bottom: 40px;
+      line-height: 1.8;
     }
 
     .divider {
       width: 90px;
       height: 2px;
       background: #d4af37;
-      margin: 40px auto;
+      margin: 0 auto 40px;
     }
 
-    .soft {
-      color: #bdbdbd;
-      font-style: italic;
-    }
-
-    footer {
+    /* SECTION */
+    section {
+      padding: 140px 22px;
+      display: flex;
+      justify-content: center;
       text-align: center;
-      padding: 80px 20px;
-      font-size: 0.9rem;
-      color: #777;
-      opacity: 0;
-      transition: opacity 2s ease;
     }
 
-    /* Reveal animation */
-    .reveal {
+    .section-content {
+      max-width: 900px;
       opacity: 0;
       transform: translateY(40px);
       transition: all 1.4s ease;
     }
 
-    .reveal.active {
+    .section-content.active {
       opacity: 1;
       transform: translateY(0);
     }
 
-    @keyframes goldGlow {
-      0% { text-shadow: none; }
-      50% { text-shadow: 0 0 12px rgba(212,175,55,0.35); }
-      100% { text-shadow: none; }
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
     }
 
+    section p {
+      font-size: 1rem;
+      color: #c9c9c9;
+      line-height: 1.9;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 100px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 600px) {
-      h1 { font-size: 2.4rem; }
-      h2 { font-size: 1.6rem; }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      section h2 {
+        font-size: 1.7rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<section>
-  <div class="container reveal">
-    <h1 class="gold">MONAZI</h1>
-    <div class="divider"></div>
-    <p class="soft">
-      Some dreams don’t begin with plans.<br/>
-      They begin quietly — with a feeling.
-    </p>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">MONAZI</div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>
+        Something <span>Meaningful</span><br/>
+        Is Taking Shape
+      </h1>
+      <div class="divider"></div>
+      <p>
+        This space is intentionally quiet right now.<br/>
+        Not because nothing is happening —
+        but because something important is being built.
+      </p>
+    </div>
   </div>
-</section>
 
-<!-- SHARED DREAM -->
-<section>
-  <div class="container reveal">
-    <p>
-      Monazi is not a website.<br/>
-      It is a dream that slowly took shape —
-      a dream that belongs to both of us.
-    </p>
-    <p>
-      A space where thoughts breathe freely,<br/>
-      where intention matters more than promises.
-    </p>
-  </div>
-</section>
+  <!-- SECTION 1 -->
+  <section>
+    <div class="section-content reveal">
+      <h2>This Is Only The Beginning</h2>
+      <p>
+        Monazi is being shaped with patience and purpose.
+        Every decision, every detail, every direction
+        is chosen carefully — not to impress quickly,
+        but to last.
+      </p>
+    </div>
+  </section>
 
-<!-- KIND HEART -->
-<section>
-  <div class="container reveal">
-    <h2 class="gold">A Kind Heart</h2>
-    <div class="divider"></div>
-    <p>
-      Your heart leans naturally toward <span class="glow">kindness</span>.<br/>
-      Toward helping the poor and the needy —
-      not for praise, but because it feels right.
-    </p>
-    <p>
-      That kind of heart doesn’t need admiration.<br/>
-      It deserves respect.
-    </p>
-  </div>
-</section>
+  <!-- SECTION 2 -->
+  <section>
+    <div class="section-content reveal">
+      <h2>Built With Intention</h2>
+      <p>
+        What’s coming here is not rushed.
+        It’s not copied.
+        And it’s not created for attention alone.<br/><br/>
+        It’s being built to stand for something —
+        values, responsibility, and a larger vision.
+      </p>
+    </div>
+  </section>
 
-<!-- FREEDOM -->
-<section>
-  <div class="container reveal">
-    <h2 class="gold">Freedom</h2>
-    <div class="divider"></div>
-    <p>
-      You’ve always wanted <span class="glow">freedom</span> —<br/>
-      not distance, but space to breathe.
-    </p>
-    <p>
-      To fly without restrictions.<br/>
-      To choose your own sky.
-    </p>
-    <p>
-      Real care never cages.<br/>
-      It walks beside.
-    </p>
-  </div>
-</section>
+  <!-- SECTION 3 -->
+  <section>
+    <div class="section-content reveal">
+      <h2>Stay Curious</h2>
+      <p>
+        This page will change.<br/>
+        When it does, it will mean
+        the next chapter is ready to be revealed.
+      </p>
+    </div>
+  </section>
 
-<!-- HIMALAYAS -->
-<section id="himalayas">
-  <div class="container reveal">
-    <h2 class="gold">The Himalayas</h2>
-    <div class="divider"></div>
-    <p>
-      You dream of silence, mountains,<br/>
-      and places where the soul feels lighter.
-    </p>
-    <p>
-      The <span class="glow">Himalayas</span> are not just a destination.<br/>
-      They are a feeling — calm, powerful, free.
-    </p>
-  </div>
-</section>
+  <!-- FOOTER -->
+  <footer>
+    Monazi — quietly building something that matters.
+  </footer>
 
-<!-- WHAT MONAZI IS -->
-<section>
-  <div class="container reveal">
-    <h2 class="gold">What Monazi Really Is</h2>
-    <div class="divider"></div>
-    <p>
-      Monazi is a name we give to something deeper —
-      a shared vision, a way of seeing the world,
-      and the belief that something meaningful can be built.
-    </p>
-    <p>
-      A world where work carries purpose,<br/>
-      where success never forgets kindness,<br/>
-      and where growth includes others — not just ourselves.
-    </p>
-    <p class="soft">
-      Monazi is not defined by what we create.<br/>
-      It is defined by who we choose to become.
-    </p>
-  </div>
-</section>
+  <!-- SCROLL REVEAL SCRIPT -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
 
-<!-- PURPOSE -->
-<section>
-  <div class="container reveal">
-    <h2 class="gold">A World Worth Building</h2>
-    <div class="divider"></div>
-    <p>
-      Dreams don’t end with feelings.<br/>
-      They begin with purpose.
-    </p>
-    <p>
-      A world where the poor and the needy are not forgotten,<br/>
-      where business is built with honesty,<br/>
-      and growth carries responsibility.
-    </p>
-    <p class="soft">
-      This is not a promise.<br/>
-      It’s a direction.
-    </p>
-  </div>
-</section>
-
-<footer id="finalLine">
-  Monazi — a shared dream, walked toward quietly.
-</footer>
-
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  const body = document.body;
-  const himalayas = document.getElementById('himalayas');
-  const footer = document.getElementById('finalLine');
-
-  function onScroll() {
-    const h = window.innerHeight;
-
-    // reveal text
-    reveals.forEach(el => {
-      if (el.getBoundingClientRect().top < h - 100) {
-        el.classList.add('active');
-      }
-    });
-
-    // Himalayas-based background toggle
-    const rect = himalayas.getBoundingClientRect();
-    const isVisible = rect.top < h * 0.7 && rect.bottom > h * 0.3;
-
-    if (isVisible) {
-      body.classList.add('midnight');
-    } else {
-      body.classList.remove('midnight');
+    function onScroll() {
+      const h = window.innerHeight;
+      reveals.forEach(el => {
+        if (el.getBoundingClientRect().top < h - 120) {
+          el.classList.add('active');
+        }
+      });
     }
 
-    // final line reveal
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
-      footer.style.opacity = 1;
-    }
-  }
-
-  window.addEventListener('scroll', onScroll);
-  onScroll();
-</script>
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  </script>
 
 </body>
 </html>
