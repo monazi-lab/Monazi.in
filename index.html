@@ -1,258 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Monazi</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif;
+  }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffd1dc, #ffe6eb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f6f5f2; /* light premium tone */
-      color: #222;
-      overflow-x: hidden;
-    }
+  .container {
+    text-align: center;
+    padding: 20px;
+  }
 
-    /* Animated background */
-    .bg-shape {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
-      border-radius: 50%;
-      filter: blur(40px);
-      animation: float 18s infinite ease-in-out;
-      z-index: -1;
-    }
+  h1 {
+    font-size: 2.4rem;
+    color: #b30059;
+    margin-bottom: 40px;
+  }
 
-    .bg1 { top: -150px; left: -150px; }
-    .bg2 { bottom: -150px; right: -150px; animation-delay: 6s; }
-    .bg3 { top: 40%; left: 60%; animation-delay: 12s; }
+  .buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
 
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-40px); }
-      100% { transform: translateY(0px); }
-    }
+  button {
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
 
-    /* HEADER */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 22px 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(246,245,242,0.85);
-      backdrop-filter: blur(6px);
-      z-index: 10;
-    }
+  #yesBtn {
+    background: #ff4d88;
+    color: #fff;
+  }
 
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      letter-spacing: 4px;
-      color: #b89b3c;
-    }
+  #yesBtn:hover {
+    transform: scale(1.08);
+  }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 20px 80px;
-    }
+  #noBtn {
+    background: #fff;
+    color: #ff4d88;
+    position: fixed; /* IMPORTANT */
+  }
 
-    .hero-content {
-      max-width: 780px;
-      animation: fadeUp 1.6s ease forwards;
-    }
+  /* SUCCESS PAGE */
+  .success {
+    display: none;
+    text-align: center;
+    animation: pop 0.8s ease;
+  }
 
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
-      line-height: 1.2;
-      margin-bottom: 18px;
-    }
+  .success h2 {
+    font-size: 2.2rem;
+    color: #b30059;
+    margin-bottom: 20px;
+  }
 
-    .hero h1 span {
-      color: #b89b3c;
-    }
+  .success p {
+    font-size: 1.1rem;
+    color: #444;
+  }
 
-    .divider {
-      width: 80px;
-      height: 2px;
-      background: #b89b3c;
-      margin: 24px auto;
-    }
+  .heart {
+    font-size: 3rem;
+    animation: float 1.2s infinite alternate;
+    margin-bottom: 20px;
+  }
 
-    .hero p {
-      font-size: 1.02rem;
-      color: #555;
-      line-height: 1.6;
-    }
+  @keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
 
-    /* SECTIONS */
-    section {
-      padding: 110px 22px;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .section-content {
-      max-width: 880px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1.3s ease;
-    }
-
-    .section-content.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.1rem;
-      margin-bottom: 18px;
-      color: #222;
-    }
-
-    section p {
-      font-size: 0.98rem;
-      color: #555;
-      line-height: 1.7;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 80px 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-
-      section h2 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+  @keyframes pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
 </head>
 
 <body>
 
-  <!-- Animated Background Shapes -->
-  <div class="bg-shape bg1"></div>
-  <div class="bg-shape bg2"></div>
-  <div class="bg-shape bg3"></div>
-
-  <!-- HEADER -->
-  <header>
-    <div class="logo">MONAZI</div>
-  </header>
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-content">
-      <h1>
-        Something <span>Important</span><br/>
-        Is Taking Shape
-      </h1>
-      <div class="divider"></div>
-      <p>
-        This space is intentionally calm. Not because nothing is happening,
-        but because something meaningful is being built with focus and care.
-      </p>
-    </div>
+<div class="container" id="main">
+  <h1 id="question"></h1>
+  <div class="buttons">
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 💔</button>
   </div>
+</div>
 
-  <!-- SECTION 1 -->
-  <section>
-    <div class="section-content reveal">
-      <h2>This Is Just The Start</h2>
-      <p>
-        Monazi is being shaped with patience and clarity.
-        Every decision is intentional, designed to last,
-        not to impress for a moment.
-      </p>
-    </div>
-  </section>
+<div class="success" id="success">
+  <div class="heart">💖💖💖</div>
+  <h2>Yay! You just made me the happiest person 💕</h2>
+  <p>Happy Valentine’s Day ❤️</p>
+</div>
 
-  <!-- SECTION 2 -->
-  <section>
-    <div class="section-content reveal">
-      <h2>Built With Purpose</h2>
-      <p>
-        What’s coming here is thoughtful and grounded.
-        It’s not rushed, not copied, and not created for noise.
-        It’s being built to stand for something meaningful.
-      </p>
-    </div>
-  </section>
+<script>
+  /* =====================
+     NAME CONFIG
+  ====================== */
+  const name = "Nazia"; // leave "" if no name
 
-  <!-- SECTION 3 -->
-  <section>
-    <div class="section-content reveal">
-      <h2>Stay Curious</h2>
-      <p>
-        This page will evolve. When it does,
-        it will signal the beginning of the next chapter.
-      </p>
-    </div>
-  </section>
+  const question = document.getElementById("question");
+  question.innerText = name
+    ? `${name}, will you be my Valentine? ❤️`
+    : "Will you be my Valentine? ❤️";
 
-  <!-- FOOTER -->
-  <footer>
-    Monazi — quietly preparing something that matters.
-  </footer>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const main = document.getElementById("main");
+  const success = document.getElementById("success");
 
-  <!-- SCROLL REVEAL SCRIPT -->
-  <script>
-    const reveals = document.querySelectorAll('.reveal');
+  /* =====================
+     RANDOM POSITION LOGIC
+  ====================== */
+  function moveNoButton() {
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
 
-    function onScroll() {
-      const h = window.innerHeight;
-      reveals.forEach(el => {
-        if (el.getBoundingClientRect().top < h - 120) {
-          el.classList.add('active');
-        }
-      });
-    }
+    const maxX = window.innerWidth - btnWidth - 10;
+    const maxY = window.innerHeight - btnHeight - 10;
 
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-  </script>
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+  }
+
+  /* Desktop: hover */
+  noBtn.addEventListener("mouseenter", moveNoButton);
+
+  /* Mobile: touch */
+  noBtn.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    moveNoButton();
+  });
+
+  /* Safety: even if clicked */
+  noBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    moveNoButton();
+  });
+
+  /* =====================
+     YES BUTTON
+  ====================== */
+  yesBtn.addEventListener("click", () => {
+    main.style.display = "none";
+    success.style.display = "block";
+  });
+
+  /* Initial random position */
+  moveNoButton();
+</script>
 
 </body>
 </html>
