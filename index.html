@@ -4,60 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Best AI Writing Tools for 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      background: #f4f6f9;
       color: #333;
+      line-height: 1.6;
     }
     header {
-      background: #4a90e2;
+      background: linear-gradient(135deg, #4a90e2, #357ab8);
       color: white;
-      padding: 20px;
+      padding: 60px 20px;
       text-align: center;
     }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
     .container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 20px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    h1 {
-      margin-top: 0;
     }
     .buttons {
       text-align: center;
-      margin: 20px 0;
+      margin: 30px 0;
     }
     .buttons a {
       display: inline-block;
       margin: 10px;
-      padding: 12px 20px;
+      padding: 14px 24px;
       background: #4a90e2;
       color: white;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: transform 0.2s, background 0.3s;
     }
     .buttons a:hover {
       background: #357ab8;
+      transform: translateY(-2px);
     }
-    .blog-section {
-      margin-top: 30px;
+    section {
+      margin-bottom: 50px;
     }
-    .blog-post {
+    h2 {
+      text-align: center;
       margin-bottom: 20px;
-      padding: 15px;
-      border-bottom: 1px solid #ddd;
+      font-size: 1.8rem;
+      color: #222;
     }
-    .blog-post h2 {
-      margin: 0 0 10px;
+    .features, .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
-    .blog-post a {
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    footer a {
       color: #4a90e2;
       text-decoration: none;
     }
@@ -66,35 +92,76 @@
 <body>
   <header>
     <h1>Best AI Writing Tools for 2026</h1>
-    <p>Discover the top AI-powered writing assistants to boost your productivity and creativity.</p>
+    <p>Boost your productivity and creativity with cutting-edge AI writing assistants.</p>
   </header>
 
   <div class="container">
+    <!-- Call-to-action buttons -->
     <div class="buttons">
-      <!-- Replace YOUR_JASPER_AFFILIATE_LINK with your actual Jasper affiliate link -->
-      <a href="YOUR_JASPER_AFFILIATE_LINK" target="_blank">Try Jasper Free</a>
-      <!-- Replace YOUR_COPYAI_AFFILIATE_LINK with your actual Copy.ai affiliate link -->
-      <a href="YOUR_COPYAI_AFFILIATE_LINK" target="_blank">Try Copy.ai Free</a>
+      <a href="YOUR_JASPER_AFFILIATE_LINK" target="_blank">✨ Try Jasper Free</a>
+      <a href="YOUR_COPYAI_AFFILIATE_LINK" target="_blank">🚀 Try Copy.ai Free</a>
     </div>
 
-    <div class="blog-section">
-      <h2>Latest Reviews & Comparisons</h2>
+    <!-- Features Section -->
+    <section>
+      <h2>Why Choose AI Writing Tools?</h2>
+      <div class="features">
+        <div class="card">
+          <h3>Save Time</h3>
+          <p>Create blog posts, emails, and ads in minutes instead of hours.</p>
+        </div>
+        <div class="card">
+          <h3>Boost Creativity</h3>
+          <p>Get fresh ideas, headlines, and content angles instantly.</p>
+        </div>
+        <div class="card">
+          <h3>Professional Quality</h3>
+          <p>Generate polished, SEO-friendly content that engages your audience.</p>
+        </div>
+      </div>
+    </section>
 
-      <div class="blog-post">
-        <h2><a href="#">Jasper AI vs Copy.ai – Which is Better?</a></h2>
+    <!-- Blog Section -->
+    <section>
+      <h2>Latest Reviews & Comparisons</h2>
+      <div class="card">
+        <h3><a href="#">Jasper AI vs Copy.ai – Which is Better?</a></h3>
         <p>A detailed comparison of Jasper and Copy.ai to help you choose the right AI writing assistant.</p>
       </div>
-
-      <div class="blog-post">
-        <h2><a href="#">Top 5 AI Writing Tools in 2026</a></h2>
+      <div class="card">
+        <h3><a href="#">Top 5 AI Writing Tools in 2026</a></h3>
         <p>Explore the best AI writing tools available this year and how they can improve your workflow.</p>
       </div>
-
-      <div class="blog-post">
-        <h2><a href="#">How to Write Blog Posts with Jasper AI</a></h2>
+      <div class="card">
+        <h3><a href="#">How to Write Blog Posts with Jasper AI</a></h3>
         <p>Step-by-step guide to creating engaging blog posts using Jasper AI.</p>
       </div>
-    </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section>
+      <h2>What Users Say</h2>
+      <div class="testimonials">
+        <div class="card">
+          <p>“Jasper helped me write 10 blog posts in a week. Game changer!”</p>
+          <strong>- Blogger</strong>
+        </div>
+        <div class="card">
+          <p>“Copy.ai makes my ad copy so much more engaging. Highly recommend!”</p>
+          <strong>- Marketer</strong>
+        </div>
+        <div class="card">
+          <p>“AI tools save me hours every day. I can focus on strategy instead of writing.”</p>
+          <strong>- Entrepreneur</strong>
+        </div>
+      </div>
+    </section>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Best AI Writing Tools. Built with ❤️ on GitHub Pages.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Contact</a></p>
+  </footer>
 </body>
 </html>
