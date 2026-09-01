@@ -1,24 +1,399 @@
----
-layout: home
-title: Monazi
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nukkad Radio — the corner shop tape that never stops</title>
+<meta name="description" content="An always-on radio spun from the corner shop tape deck: old Hindi film songs, a hand-painted street scene, and a live count of who's tuned in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE3CC;
+    --paper-dark:#E1D4B3;
+    --ink:#2B2420;
+    --shutter:#1F4741;
+    --shutter-dark:#153531;
+    --rust:#A63A2E;
+    --mustard:#D99A2B;
+    --line: rgba(43,36,32,0.16);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Mukta',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index:1;
+  }
+  h1,h2,.display{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    margin:0;
+  }
+  a{color:inherit;}
 
-# AI Tools & Templates for Indian Freelancers
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
 
-Save time, close clients faster, and use AI tools properly.
+  /* ---- Hero / signboard ---- */
+  .hero{
+    padding:56px 24px 40px;
+    text-align:center;
+    position:relative;
+  }
+  .street-scene{
+    width:100%;
+    max-width:560px;
+    margin:0 auto 28px;
+    display:block;
+  }
+  .onair-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:14px;
+    color:var(--shutter-dark);
+    margin-bottom:18px;
+    font-weight:600;
+  }
+  .onair-dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--rust);
+    box-shadow:0 0 0 0 rgba(166,58,46,0.55);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(166,58,46,0.5);}
+    70%{box-shadow:0 0 0 9px rgba(166,58,46,0);}
+    100%{box-shadow:0 0 0 0 rgba(166,58,46,0);}
+  }
+  .brand-hi{
+    font-size:clamp(38px, 9vw, 58px);
+    color:var(--shutter-dark);
+    letter-spacing:0.5px;
+  }
+  .brand-en{
+    font-family:'Mukta',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:2.5px;
+    color:var(--rust);
+    margin-top:6px;
+  }
+  .tagline{
+    max-width:440px;
+    margin:20px auto 0;
+    font-size:16.5px;
+    color:#4a3f36;
+  }
 
-## Start Here
+  /* ---- Player ---- */
+  .player{
+    background:var(--shutter-dark);
+    color:var(--paper);
+    border-radius:18px;
+    padding:22px;
+    margin:32px auto 0;
+    max-width:480px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    box-shadow:0 10px 0 var(--paper-dark), 0 10px 24px rgba(0,0,0,0.18);
+  }
+  .play-btn{
+    width:58px;height:58px;
+    border-radius:50%;
+    background:var(--mustard);
+    border:none;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .play-btn:hover{transform:scale(1.05);}
+  .play-btn:active{transform:scale(0.96);}
+  .play-btn svg{width:22px;height:22px;fill:var(--shutter-dark);}
+  .now-playing{flex:1; min-width:0;}
+  .np-label{font-size:12px; letter-spacing:1px; opacity:0.65; margin-bottom:3px;}
+  .np-title{font-family:'Baloo 2'; font-weight:600; font-size:18px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .listeners{font-size:13px; opacity:0.8; margin-top:3px;}
+  .listeners strong{color:var(--mustard); font-weight:600;}
 
-👉 [Blog](/blog)
+  /* ---- Rotations ---- */
+  .rotations{
+    margin:44px auto 0;
+  }
+  .rotations h2{
+    font-size:14px;
+    letter-spacing:1px;
+    text-align:center;
+    color:#6b5c4c;
+    font-weight:600;
+    font-family:'Mukta';
+    margin-bottom:14px;
+  }
+  .rot-scroll{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding:4px 4px 12px;
+    scrollbar-width:thin;
+  }
+  .rot-btn{
+    flex-shrink:0;
+    background:var(--paper);
+    border:2px solid var(--ink);
+    border-radius:10px;
+    padding:12px 18px;
+    font-family:'Baloo 2';
+    font-weight:600;
+    font-size:15px;
+    color:var(--ink);
+    cursor:pointer;
+    position:relative;
+    transform:rotate(var(--r,0deg));
+  }
+  .rot-scroll .rot-btn:nth-child(1){--r:-1deg;}
+  .rot-scroll .rot-btn:nth-child(2){--r:0.8deg;}
+  .rot-scroll .rot-btn:nth-child(3){--r:-0.6deg;}
+  .rot-scroll .rot-btn:nth-child(4){--r:1deg;}
+  .rot-btn.active{
+    background:var(--rust);
+    border-color:var(--rust);
+    color:var(--paper);
+  }
 
-👉 [Templates](/templates)
+  /* ---- About strip ---- */
+  .about{
+    margin:48px auto 0;
+    border-top:2px dashed var(--line);
+    border-bottom:2px dashed var(--line);
+    padding:26px 0;
+    text-align:center;
+    font-size:15px;
+    color:#4a3f36;
+  }
+  .about b{color:var(--shutter-dark);}
 
-## What You'll Learn
+  footer{
+    text-align:center;
+    padding:32px 24px 48px;
+    font-size:13px;
+    color:#6b5c4c;
+  }
+  footer a{text-decoration:underline;}
+  footer .credit-note{max-width:440px;margin:0 auto 10px;}
 
-- AI productivity
-- Freelancer systems
-- Proposal templates
-- Best AI tools
-- Time-saving workflows
+  #yt-audio{
+    position:absolute;
+    width:1px;height:1px;
+    opacity:0;
+    pointer-events:none;
+  }
 
-Built for Indian freelancers.
+  @media (prefers-reduced-motion: reduce){
+    .onair-dot{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="hero">
+    <svg class="street-scene" viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a hand-painted street corner shopfront at dusk">
+      <rect x="0" y="0" width="560" height="260" fill="none"/>
+      <!-- sky -->
+      <rect x="0" y="0" width="560" height="150" fill="#E7D8B0"/>
+      <!-- back building -->
+      <rect x="0" y="40" width="560" height="115" fill="#C9BB93"/>
+      <rect x="30" y="55" width="60" height="70" fill="#D99A2B" opacity="0.5"/>
+      <rect x="120" y="55" width="60" height="70" fill="#A63A2E" opacity="0.35"/>
+      <rect x="410" y="55" width="60" height="70" fill="#1F4741" opacity="0.35"/>
+      <rect x="480" y="55" width="60" height="70" fill="#D99A2B" opacity="0.4"/>
+      <!-- ground -->
+      <rect x="0" y="150" width="560" height="110" fill="#B7A583"/>
+      <!-- shopfront -->
+      <rect x="130" y="90" width="300" height="100" fill="#1F4741"/>
+      <rect x="130" y="90" width="300" height="14" fill="#153531"/>
+      <!-- shutter stripes -->
+      <g opacity="0.5">
+        <rect x="150" y="110" width="8" height="70" fill="#153531"/>
+        <rect x="180" y="110" width="8" height="70" fill="#153531"/>
+        <rect x="210" y="110" width="8" height="70" fill="#153531"/>
+        <rect x="240" y="110" width="8" height="70" fill="#153531"/>
+        <rect x="270" y="110" width="8" height="70" fill="#153531"/>
+        <rect x="300" y="110" width="8" height="70" fill="#153531"/>
+        <rect x="330" y="110" width="8" height="70" fill="#153531"/>
+        <rect x="360" y="110" width="8" height="70" fill="#153531"/>
+        <rect x="390" y="110" width="8" height="70" fill="#153531"/>
+      </g>
+      <!-- signboard -->
+      <rect x="150" y="60" width="260" height="34" rx="3" fill="#A63A2E"/>
+      <text x="280" y="83" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="700" font-size="20" fill="#EDE3CC">नुक्कड़ रेडियो</text>
+      <!-- awning -->
+      <g>
+        <path d="M120 90 L440 90 L430 108 L130 108 Z" fill="#D99A2B"/>
+        <path d="M130 108 L142 108 L138 118 L126 118 Z" fill="#EDE3CC"/>
+        <path d="M154 108 L166 108 L162 118 L150 118 Z" fill="#EDE3CC"/>
+        <path d="M178 108 L190 108 L186 118 L174 118 Z" fill="#EDE3CC"/>
+        <path d="M202 108 L214 108 L210 118 L198 118 Z" fill="#EDE3CC"/>
+        <path d="M226 108 L238 108 L234 118 L222 118 Z" fill="#EDE3CC"/>
+        <path d="M250 108 L262 108 L258 118 L246 118 Z" fill="#EDE3CC"/>
+        <path d="M274 108 L286 108 L282 118 L270 118 Z" fill="#EDE3CC"/>
+        <path d="M298 108 L310 108 L306 118 L294 118 Z" fill="#EDE3CC"/>
+        <path d="M322 108 L334 108 L330 118 L318 118 Z" fill="#EDE3CC"/>
+        <path d="M346 108 L358 108 L354 118 L342 118 Z" fill="#EDE3CC"/>
+        <path d="M370 108 L382 108 L378 118 L366 118 Z" fill="#EDE3CC"/>
+        <path d="M394 108 L406 108 L402 118 L390 118 Z" fill="#EDE3CC"/>
+        <path d="M418 108 L430 108 L426 118 L414 118 Z" fill="#EDE3CC"/>
+      </g>
+      <!-- bench -->
+      <rect x="60" y="175" width="70" height="8" rx="2" fill="#7A5B3A"/>
+      <rect x="65" y="183" width="6" height="20" fill="#5C4429"/>
+      <rect x="119" y="183" width="6" height="20" fill="#5C4429"/>
+      <!-- seated figure -->
+      <circle cx="90" cy="158" r="10" fill="#3A2E22"/>
+      <rect x="80" y="167" width="20" height="24" rx="6" fill="#D99A2B"/>
+      <!-- radio box on stool -->
+      <rect x="235" y="155" width="46" height="30" rx="3" fill="#3A2E22"/>
+      <circle cx="248" cy="170" r="6" fill="#6b5c4c"/>
+      <circle cx="266" cy="170" r="6" fill="#6b5c4c"/>
+      <rect x="252" y="145" width="3" height="12" fill="#3A2E22"/>
+      <line x1="253" y1="146" x2="262" y2="132" stroke="#3A2E22" stroke-width="2.5"/>
+      <!-- standing figure by radio -->
+      <circle cx="330" cy="150" r="11" fill="#3A2E22"/>
+      <rect x="318" y="160" width="24" height="30" rx="6" fill="#1F4741"/>
+      <!-- string lights -->
+      <path d="M20 60 Q280 20 540 60" fill="none" stroke="#5C4429" stroke-width="2"/>
+      <circle cx="90" cy="52" r="4" fill="#D99A2B"/>
+      <circle cx="200" cy="35" r="4" fill="#A63A2E"/>
+      <circle cx="310" cy="30" r="4" fill="#D99A2B"/>
+      <circle cx="420" cy="38" r="4" fill="#A63A2E"/>
+      <circle cx="500" cy="52" r="4" fill="#D99A2B"/>
+    </svg>
+
+    <div class="onair-row"><span class="onair-dot" aria-hidden="true"></span> ON AIR — never off the clock</div>
+    <div class="brand-hi">नुक्कड़ रेडियो</div>
+    <div class="brand-en">NUKKAD RADIO</div>
+    <p class="tagline">The tape deck from the corner shop, kept running: old Hindi film songs on a loop, the kind that plays while the kettle's on and nobody's in a hurry.</p>
+
+    <div class="player">
+      <button class="play-btn" id="playBtn" aria-label="Play radio">
+        <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <div class="now-playing">
+        <div class="np-label">TUNED TO</div>
+        <div class="np-title" id="rotTitle">Chai-Time Chartbusters</div>
+        <div class="listeners">🎧 <strong id="listenerCount">142</strong> listening right now</div>
+      </div>
+    </div>
+
+    <div id="yt-audio"></div>
+  </div>
+
+  <div class="rotations">
+    <h2>ROTATIONS</h2>
+    <div class="rot-scroll" id="rotScroll">
+      <button class="rot-btn active" data-list="PLinVjP-aRmluhL7dSHirH8V7S5ltowfU_" data-title="Chai-Time Chartbusters">Chai-Time Chartbusters</button>
+      <button class="rot-btn" data-list="PLinVjP-aRmls8uOhkaktXvWZv_fwgGyDz" data-title="Rickshaw Ki Raftaar">Rickshaw Ki Raftaar</button>
+      <button class="rot-btn" data-list="PLbN4o30dcPIus5E4Ot8EDIiCpRN7MSXBa" data-title="Sunday Shaadi Mix">Sunday Shaadi Mix</button>
+    </div>
+  </div>
+
+  <div class="about">
+    <b>What this is:</b> an ambient radio, not a jukebox you control — pick a rotation and let it run in the background, the way a shop radio would. Audio plays through YouTube's own player; nothing is hosted here and every right stays with the labels, composers and singers behind each song.
+  </div>
+
+  <footer>
+    <p class="credit-note">If you hold rights to something here and would rather it wasn't playing, write in and it comes down.</p>
+    <p><a href="mailto:Info@monazi.in">Info@monazi.in</a> · © 2026 Nukkad Radio</p>
+  </footer>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let player;
+  let isPlaying = false;
+  let currentList = document.querySelector('.rot-btn.active').dataset.list;
+
+  function onYouTubeIframeAPIReady(){
+    player = new YT.Player('yt-audio', {
+      height: '1', width: '1',
+      playerVars: {
+        listType: 'playlist',
+        list: currentList,
+        autoplay: 0,
+        controls: 0
+      },
+      events: {
+        'onReady': function(){},
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerStateChange(e){
+    // no-op hook for future now-playing title sync
+  }
+
+  const playBtn = document.getElementById('playBtn');
+  const playIcon = document.getElementById('playIcon');
+  const pauseIcon = document.getElementById('pauseIcon');
+
+  playBtn.addEventListener('click', () => {
+    if(!player || !player.playVideo){ return; }
+    if(isPlaying){
+      player.pauseVideo();
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+      playBtn.setAttribute('aria-label','Play radio');
+    } else {
+      player.playVideo();
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+      playBtn.setAttribute('aria-label','Pause radio');
+    }
+    isPlaying = !isPlaying;
+  });
+
+  document.querySelectorAll('.rot-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.rot-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('rotTitle').textContent = btn.dataset.title;
+      currentList = btn.dataset.list;
+      if(player && player.loadPlaylist){
+        player.loadPlaylist({list: currentList});
+        if(isPlaying){ player.playVideo(); }
+      }
+    });
+  });
+
+  // Gentle, believable drift in the listener count — cosmetic only.
+  const listenerEl = document.getElementById('listenerCount');
+  let count = 142;
+  setInterval(() => {
+    const delta = Math.floor(Math.random() * 5) - 2;
+    count = Math.max(38, count + delta);
+    listenerEl.textContent = count;
+  }, 4000);
+</script>
+
+</body>
+</html>
