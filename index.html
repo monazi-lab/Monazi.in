@@ -3,396 +3,317 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nukkad Radio — the corner shop tape that never stops</title>
-<meta name="description" content="An always-on radio spun from the corner shop tape deck: old Hindi film songs, a hand-painted street scene, and a live count of who's tuned in.">
+<title>Monazi Foundation — help that reaches</title>
+<meta name="description" content="Monazi Foundation supports people, places and causes in need. Give directly, and see exactly where it goes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mukta:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EDE3CC;
-    --paper-dark:#E1D4B3;
-    --ink:#2B2420;
-    --shutter:#1F4741;
-    --shutter-dark:#153531;
-    --rust:#A63A2E;
-    --mustard:#D99A2B;
-    --line: rgba(43,36,32,0.16);
+    --paper:#F6F1E4;
+    --ink:#2A2521;
+    --ink-soft:#5A4F44;
+    --teal:#16403D;
+    --teal-deep:#0E2E2B;
+    --marigold:#E8933C;
+    --clay:#B5533C;
+    --sage:#6E8B6A;
+    --line:rgba(42,37,33,0.14);
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{
+    margin:0;
     background:var(--paper);
     color:var(--ink);
-    font-family:'Mukta',sans-serif;
+    font-family:'Work Sans',sans-serif;
     font-size:16px;
-    line-height:1.55;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:0.05;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    z-index:1;
-  }
-  h1,h2,.display{
-    font-family:'Baloo 2', sans-serif;
-    font-weight:700;
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
     margin:0;
+    line-height:1.12;
   }
   a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 28px;}
+  section{padding:72px 0;}
+  @media (max-width:640px){ section{padding:52px 0;} }
 
-  .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+  /* ---- Nav ---- */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 28px;
+    max-width:980px; margin:0 auto;
+  }
+  .nav-mark{font-family:'Fraunces'; font-weight:600; font-size:20px; color:var(--teal-deep);}
+  .nav-links{display:flex; gap:26px; font-size:14.5px; font-weight:500;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft);}
+  .nav-donate{
+    background:var(--marigold); color:#fff; padding:9px 18px; border-radius:100px;
+    font-weight:600; text-decoration:none; font-size:14.5px;
+  }
+  @media (max-width:640px){ .nav-links{display:none;} }
 
-  /* ---- Hero / signboard ---- */
+  /* ---- Hero ---- */
   .hero{
-    padding:56px 24px 40px;
-    text-align:center;
-    position:relative;
-  }
-  .street-scene{
-    width:100%;
-    max-width:560px;
-    margin:0 auto 28px;
-    display:block;
-  }
-  .onair-row{
-    display:flex;
+    padding:40px 28px 60px;
+    max-width:980px; margin:0 auto;
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:48px;
     align-items:center;
-    justify-content:center;
-    gap:10px;
-    font-size:14px;
-    color:var(--shutter-dark);
-    margin-bottom:18px;
-    font-weight:600;
   }
-  .onair-dot{
-    width:9px;height:9px;border-radius:50%;
-    background:var(--rust);
-    box-shadow:0 0 0 0 rgba(166,58,46,0.55);
-    animation:pulse 2.2s infinite;
+  @media (max-width:760px){ .hero{grid-template-columns:1fr; padding-top:12px;} }
+  .hero h1{
+    font-size:clamp(34px,5.2vw,52px);
+    color:var(--teal-deep);
+    letter-spacing:-0.5px;
   }
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(166,58,46,0.5);}
-    70%{box-shadow:0 0 0 9px rgba(166,58,46,0);}
-    100%{box-shadow:0 0 0 0 rgba(166,58,46,0);}
+  .hero h1 em{font-style:italic; color:var(--clay);}
+  .hero p{
+    font-size:17px; color:var(--ink-soft); max-width:440px; margin-top:18px;
   }
-  .brand-hi{
-    font-size:clamp(38px, 9vw, 58px);
-    color:var(--shutter-dark);
-    letter-spacing:0.5px;
+  .hero-actions{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--teal-deep); color:#fff; padding:13px 26px; border-radius:100px;
+    text-decoration:none; font-weight:600; font-size:15px; display:inline-block;
+    border:none; cursor:pointer;
   }
-  .brand-en{
-    font-family:'Mukta',sans-serif;
-    font-weight:600;
-    font-size:15px;
-    letter-spacing:2.5px;
-    color:var(--rust);
-    margin-top:6px;
+  .btn-ghost{
+    padding:13px 22px; border-radius:100px; border:1.5px solid var(--ink);
+    text-decoration:none; font-weight:600; font-size:15px; color:var(--ink);
   }
-  .tagline{
-    max-width:440px;
-    margin:20px auto 0;
-    font-size:16.5px;
-    color:#4a3f36;
-  }
+  .hero-art{width:100%; height:auto;}
 
-  /* ---- Player ---- */
-  .player{
-    background:var(--shutter-dark);
-    color:var(--paper);
-    border-radius:18px;
-    padding:22px;
-    margin:32px auto 0;
-    max-width:480px;
-    display:flex;
-    align-items:center;
-    gap:16px;
-    box-shadow:0 10px 0 var(--paper-dark), 0 10px 24px rgba(0,0,0,0.18);
+  /* ---- Stats ---- */
+  .stats{
+    background:var(--teal-deep); color:var(--paper);
   }
-  .play-btn{
-    width:58px;height:58px;
-    border-radius:50%;
-    background:var(--mustard);
-    border:none;
-    flex-shrink:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:transform .15s ease;
+  .stats .wrap{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:32px; text-align:left;
   }
-  .play-btn:hover{transform:scale(1.05);}
-  .play-btn:active{transform:scale(0.96);}
-  .play-btn svg{width:22px;height:22px;fill:var(--shutter-dark);}
-  .now-playing{flex:1; min-width:0;}
-  .np-label{font-size:12px; letter-spacing:1px; opacity:0.65; margin-bottom:3px;}
-  .np-title{font-family:'Baloo 2'; font-weight:600; font-size:18px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-  .listeners{font-size:13px; opacity:0.8; margin-top:3px;}
-  .listeners strong{color:var(--mustard); font-weight:600;}
+  @media (max-width:640px){ .stats .wrap{grid-template-columns:1fr; gap:26px;} }
+  .stat-num{font-family:'Fraunces'; font-size:40px; color:var(--marigold);}
+  .stat-label{font-size:14.5px; color:#CFE0DC; margin-top:4px;}
 
-  /* ---- Rotations ---- */
-  .rotations{
-    margin:44px auto 0;
+  /* ---- Causes ---- */
+  .section-head{max-width:520px; margin-bottom:36px;}
+  .section-head h2{font-size:clamp(26px,4vw,34px); color:var(--teal-deep);}
+  .section-head p{color:var(--ink-soft); margin-top:10px; font-size:15.5px;}
+
+  .cause-row{
+    display:grid; grid-template-columns:180px 1fr; gap:28px;
+    padding:26px 0; border-top:1px solid var(--line);
+    align-items:start;
   }
-  .rotations h2{
-    font-size:14px;
-    letter-spacing:1px;
-    text-align:center;
-    color:#6b5c4c;
-    font-weight:600;
-    font-family:'Mukta';
-    margin-bottom:14px;
-  }
-  .rot-scroll{
-    display:flex;
-    gap:12px;
-    overflow-x:auto;
-    padding:4px 4px 12px;
-    scrollbar-width:thin;
-  }
-  .rot-btn{
-    flex-shrink:0;
+  .cause-row:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:640px){ .cause-row{grid-template-columns:1fr; gap:8px;} }
+  .cause-tag{font-family:'Fraunces'; font-size:19px; color:var(--clay);}
+  .cause-row p{margin:0; color:var(--ink-soft); font-size:15.5px; max-width:560px;}
+
+  /* ---- Donate ---- */
+  .donate{background:#EFE6D2;}
+  .donate-panel{
     background:var(--paper);
-    border:2px solid var(--ink);
-    border-radius:10px;
-    padding:12px 18px;
-    font-family:'Baloo 2';
-    font-weight:600;
-    font-size:15px;
-    color:var(--ink);
-    cursor:pointer;
-    position:relative;
-    transform:rotate(var(--r,0deg));
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:36px;
+    max-width:520px;
   }
-  .rot-scroll .rot-btn:nth-child(1){--r:-1deg;}
-  .rot-scroll .rot-btn:nth-child(2){--r:0.8deg;}
-  .rot-scroll .rot-btn:nth-child(3){--r:-0.6deg;}
-  .rot-scroll .rot-btn:nth-child(4){--r:1deg;}
-  .rot-btn.active{
-    background:var(--rust);
-    border-color:var(--rust);
-    color:var(--paper);
+  .amounts{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 22px;}
+  .amt-btn{
+    border:1.5px solid var(--ink); background:transparent;
+    padding:11px 20px; border-radius:100px; font-weight:600; font-size:15px;
+    cursor:pointer; font-family:'Work Sans';
   }
+  .amt-btn.selected{background:var(--marigold); border-color:var(--marigold); color:#fff;}
+  .amt-custom{
+    display:flex; align-items:center; gap:8px; border:1.5px solid var(--ink);
+    border-radius:100px; padding:6px 6px 6px 18px; margin-bottom:22px;
+  }
+  .amt-custom span{font-weight:600;}
+  .amt-custom input{
+    border:none; outline:none; background:transparent; font-family:'Work Sans';
+    font-size:15px; width:100%; padding:6px 0;
+  }
+  .donate-cta{
+    width:100%; background:var(--teal-deep); color:#fff; border:none;
+    padding:15px; border-radius:100px; font-weight:600; font-size:16px; cursor:pointer;
+  }
+  .donate-note{font-size:13px; color:var(--ink-soft); margin-top:14px; line-height:1.5;}
+  .upi-line{
+    margin-top:20px; padding-top:20px; border-top:1px dashed var(--line);
+    font-size:14.5px; color:var(--ink-soft);
+  }
+  .upi-line b{color:var(--ink);}
 
-  /* ---- About strip ---- */
-  .about{
-    margin:48px auto 0;
-    border-top:2px dashed var(--line);
-    border-bottom:2px dashed var(--line);
-    padding:26px 0;
-    text-align:center;
-    font-size:15px;
-    color:#4a3f36;
+  /* ---- Transparency ---- */
+  .ledger{border-top:1px solid var(--line);}
+  .ledger-row{
+    display:grid; grid-template-columns:1fr auto auto; gap:18px;
+    padding:16px 0; border-bottom:1px solid var(--line);
+    align-items:center; font-size:15px;
   }
-  .about b{color:var(--shutter-dark);}
+  .ledger-row.head{
+    font-weight:600; color:var(--ink-soft); font-size:13px; letter-spacing:0.3px;
+  }
+  .ledger-name{font-weight:500;}
+  .ledger-cause{color:var(--ink-soft); font-size:13.5px; margin-top:2px;}
+  .ledger-amt{font-family:'Fraunces'; color:var(--teal-deep); font-size:17px; white-space:nowrap;}
+  .ledger-date{color:var(--ink-soft); font-size:13.5px; white-space:nowrap;}
+  .ledger-total{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding-top:22px; margin-top:6px;
+  }
+  .ledger-total .display{font-size:28px; color:var(--clay);}
 
   footer{
-    text-align:center;
-    padding:32px 24px 48px;
-    font-size:13px;
-    color:#6b5c4c;
+    background:var(--teal-deep); color:#CFE0DC; padding:44px 0 32px; font-size:14px;
   }
-  footer a{text-decoration:underline;}
-  footer .credit-note{max-width:440px;margin:0 auto 10px;}
-
-  #yt-audio{
-    position:absolute;
-    width:1px;height:1px;
-    opacity:0;
-    pointer-events:none;
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .onair-dot{animation:none;}
-  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px;}
+  footer a{color:#fff; text-decoration:underline;}
+  footer .foot-mark{font-family:'Fraunces'; font-size:19px; color:#fff;}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <div class="hero">
-    <svg class="street-scene" viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a hand-painted street corner shopfront at dusk">
-      <rect x="0" y="0" width="560" height="260" fill="none"/>
-      <!-- sky -->
-      <rect x="0" y="0" width="560" height="150" fill="#E7D8B0"/>
-      <!-- back building -->
-      <rect x="0" y="40" width="560" height="115" fill="#C9BB93"/>
-      <rect x="30" y="55" width="60" height="70" fill="#D99A2B" opacity="0.5"/>
-      <rect x="120" y="55" width="60" height="70" fill="#A63A2E" opacity="0.35"/>
-      <rect x="410" y="55" width="60" height="70" fill="#1F4741" opacity="0.35"/>
-      <rect x="480" y="55" width="60" height="70" fill="#D99A2B" opacity="0.4"/>
-      <!-- ground -->
-      <rect x="0" y="150" width="560" height="110" fill="#B7A583"/>
-      <!-- shopfront -->
-      <rect x="130" y="90" width="300" height="100" fill="#1F4741"/>
-      <rect x="130" y="90" width="300" height="14" fill="#153531"/>
-      <!-- shutter stripes -->
-      <g opacity="0.5">
-        <rect x="150" y="110" width="8" height="70" fill="#153531"/>
-        <rect x="180" y="110" width="8" height="70" fill="#153531"/>
-        <rect x="210" y="110" width="8" height="70" fill="#153531"/>
-        <rect x="240" y="110" width="8" height="70" fill="#153531"/>
-        <rect x="270" y="110" width="8" height="70" fill="#153531"/>
-        <rect x="300" y="110" width="8" height="70" fill="#153531"/>
-        <rect x="330" y="110" width="8" height="70" fill="#153531"/>
-        <rect x="360" y="110" width="8" height="70" fill="#153531"/>
-        <rect x="390" y="110" width="8" height="70" fill="#153531"/>
-      </g>
-      <!-- signboard -->
-      <rect x="150" y="60" width="260" height="34" rx="3" fill="#A63A2E"/>
-      <text x="280" y="83" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="700" font-size="20" fill="#EDE3CC">नुक्कड़ रेडियो</text>
-      <!-- awning -->
-      <g>
-        <path d="M120 90 L440 90 L430 108 L130 108 Z" fill="#D99A2B"/>
-        <path d="M130 108 L142 108 L138 118 L126 118 Z" fill="#EDE3CC"/>
-        <path d="M154 108 L166 108 L162 118 L150 118 Z" fill="#EDE3CC"/>
-        <path d="M178 108 L190 108 L186 118 L174 118 Z" fill="#EDE3CC"/>
-        <path d="M202 108 L214 108 L210 118 L198 118 Z" fill="#EDE3CC"/>
-        <path d="M226 108 L238 108 L234 118 L222 118 Z" fill="#EDE3CC"/>
-        <path d="M250 108 L262 108 L258 118 L246 118 Z" fill="#EDE3CC"/>
-        <path d="M274 108 L286 108 L282 118 L270 118 Z" fill="#EDE3CC"/>
-        <path d="M298 108 L310 108 L306 118 L294 118 Z" fill="#EDE3CC"/>
-        <path d="M322 108 L334 108 L330 118 L318 118 Z" fill="#EDE3CC"/>
-        <path d="M346 108 L358 108 L354 118 L342 118 Z" fill="#EDE3CC"/>
-        <path d="M370 108 L382 108 L378 118 L366 118 Z" fill="#EDE3CC"/>
-        <path d="M394 108 L406 108 L402 118 L390 118 Z" fill="#EDE3CC"/>
-        <path d="M418 108 L430 108 L426 118 L414 118 Z" fill="#EDE3CC"/>
-      </g>
-      <!-- bench -->
-      <rect x="60" y="175" width="70" height="8" rx="2" fill="#7A5B3A"/>
-      <rect x="65" y="183" width="6" height="20" fill="#5C4429"/>
-      <rect x="119" y="183" width="6" height="20" fill="#5C4429"/>
-      <!-- seated figure -->
-      <circle cx="90" cy="158" r="10" fill="#3A2E22"/>
-      <rect x="80" y="167" width="20" height="24" rx="6" fill="#D99A2B"/>
-      <!-- radio box on stool -->
-      <rect x="235" y="155" width="46" height="30" rx="3" fill="#3A2E22"/>
-      <circle cx="248" cy="170" r="6" fill="#6b5c4c"/>
-      <circle cx="266" cy="170" r="6" fill="#6b5c4c"/>
-      <rect x="252" y="145" width="3" height="12" fill="#3A2E22"/>
-      <line x1="253" y1="146" x2="262" y2="132" stroke="#3A2E22" stroke-width="2.5"/>
-      <!-- standing figure by radio -->
-      <circle cx="330" cy="150" r="11" fill="#3A2E22"/>
-      <rect x="318" y="160" width="24" height="30" rx="6" fill="#1F4741"/>
-      <!-- string lights -->
-      <path d="M20 60 Q280 20 540 60" fill="none" stroke="#5C4429" stroke-width="2"/>
-      <circle cx="90" cy="52" r="4" fill="#D99A2B"/>
-      <circle cx="200" cy="35" r="4" fill="#A63A2E"/>
-      <circle cx="310" cy="30" r="4" fill="#D99A2B"/>
-      <circle cx="420" cy="38" r="4" fill="#A63A2E"/>
-      <circle cx="500" cy="52" r="4" fill="#D99A2B"/>
-    </svg>
-
-    <div class="onair-row"><span class="onair-dot" aria-hidden="true"></span> ON AIR — never off the clock</div>
-    <div class="brand-hi">नुक्कड़ रेडियो</div>
-    <div class="brand-en">NUKKAD RADIO</div>
-    <p class="tagline">The tape deck from the corner shop, kept running: old Hindi film songs on a loop, the kind that plays while the kettle's on and nobody's in a hurry.</p>
-
-    <div class="player">
-      <button class="play-btn" id="playBtn" aria-label="Play radio">
-        <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-      </button>
-      <div class="now-playing">
-        <div class="np-label">TUNED TO</div>
-        <div class="np-title" id="rotTitle">Chai-Time Chartbusters</div>
-        <div class="listeners">🎧 <strong id="listenerCount">142</strong> listening right now</div>
-      </div>
-    </div>
-
-    <div id="yt-audio"></div>
+<nav>
+  <div class="nav-mark">Monazi Foundation</div>
+  <div class="nav-links">
+    <a href="#work">Our work</a>
+    <a href="#donate">Donate</a>
   </div>
+  <a class="nav-donate" href="#donate">Donate</a>
+</nav>
 
-  <div class="rotations">
-    <h2>ROTATIONS</h2>
-    <div class="rot-scroll" id="rotScroll">
-      <button class="rot-btn active" data-list="PLinVjP-aRmluhL7dSHirH8V7S5ltowfU_" data-title="Chai-Time Chartbusters">Chai-Time Chartbusters</button>
-      <button class="rot-btn" data-list="PLinVjP-aRmls8uOhkaktXvWZv_fwgGyDz" data-title="Rickshaw Ki Raftaar">Rickshaw Ki Raftaar</button>
-      <button class="rot-btn" data-list="PLbN4o30dcPIus5E4Ot8EDIiCpRN7MSXBa" data-title="Sunday Shaadi Mix">Sunday Shaadi Mix</button>
+<div class="hero">
+  <div>
+    <h1>Help that reaches <em>who it's for</em>.</h1>
+    <p>Monazi Foundation puts what you give directly toward a person, a place, or a cause that needs it — a family short on rent, a school missing a roof, a ward that ran out of medicine. No layers in between.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#donate">Give now</a>
+      <a class="btn-ghost" href="#donate">Give now</a>
     </div>
   </div>
-
-  <div class="about">
-    <b>What this is:</b> an ambient radio, not a jukebox you control — pick a rotation and let it run in the background, the way a shop radio would. Audio plays through YouTube's own player; nothing is hosted here and every right stays with the labels, composers and singers behind each song.
-  </div>
-
-  <footer>
-    <p class="credit-note">If you hold rights to something here and would rather it wasn't playing, write in and it comes down.</p>
-    <p><a href="mailto:Info@monazi.in">Info@monazi.in</a> · © 2026 Nukkad Radio</p>
-  </footer>
+  <svg class="hero-art" viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of two hands offering support, with a small plant growing between them">
+    <circle cx="190" cy="150" r="150" fill="#E8933C" opacity="0.14"/>
+    <circle cx="190" cy="150" r="100" fill="#16403D" opacity="0.08"/>
+    <!-- ground/bowl of hands -->
+    <path d="M70 210 Q100 260 190 262 Q280 260 310 210 L295 195 Q250 225 190 226 Q130 225 85 195 Z" fill="#16403D"/>
+    <path d="M70 210 Q100 260 190 262 Q280 260 310 210" fill="none" stroke="#0E2E2B" stroke-width="3"/>
+    <!-- left hand -->
+    <path d="M75 205 Q60 180 75 158 Q85 145 100 150 L112 190 Q108 208 90 212 Z" fill="#B5533C"/>
+    <!-- right hand -->
+    <path d="M305 205 Q320 180 305 158 Q295 145 280 150 L268 190 Q272 208 290 212 Z" fill="#B5533C"/>
+    <!-- stem -->
+    <path d="M190 226 C190 190 175 175 190 140" stroke="#6E8B6A" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <!-- leaves -->
+    <path d="M190 190 C165 185 155 165 168 148 C185 155 192 172 190 190Z" fill="#6E8B6A"/>
+    <path d="M190 165 C212 158 224 138 212 120 C194 128 186 148 190 165Z" fill="#7C9473"/>
+    <!-- small flower -->
+    <circle cx="191" cy="132" r="7" fill="#E8933C"/>
+    <circle cx="182" cy="126" r="6" fill="#F0AC5F"/>
+    <circle cx="200" cy="126" r="6" fill="#F0AC5F"/>
+    <circle cx="191" cy="118" r="6" fill="#F0AC5F"/>
+  </svg>
 </div>
 
-<script src="https://www.youtube.com/iframe_api"></script>
+
+<section id="work" class="wrap">
+  <div class="section-head">
+    <h2>What we put help toward</h2>
+    <p>Monazi doesn't run one program — it responds to what's in front of it. A person, a place, or a thing, whichever needs it most right now.</p>
+  </div>
+
+  <div class="cause-row">
+    <div class="cause-tag">People</div>
+    <p>Families facing a sudden cost they can't absorb — a hospital bill, a month's rent, school fees due before a paycheck arrives. Direct, one-time support, given quickly.</p>
+  </div>
+  <div class="cause-row">
+    <div class="cause-tag">Places</div>
+    <p>Shared spaces that fall through the cracks — a village handpump that's stopped working, a shelter roof that leaks through monsoon, a community kitchen short on supplies.</p>
+  </div>
+  <div class="cause-row">
+    <div class="cause-tag">Causes</div>
+    <p>Whatever doesn't fit a category but clearly matters — an animal rescue short on feed, a relief drive after a local flood, a first set of books for a child starting school.</p>
+  </div>
+</section>
+
+<section id="donate" class="donate">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Give directly</h2>
+      <p>Pick an amount, or set your own. Every rupee is logged below within a day of arriving.</p>
+    </div>
+
+    <div class="donate-panel">
+      <div class="amounts" id="amountRow">
+        <button class="amt-btn" data-amt="500">₹500</button>
+        <button class="amt-btn selected" data-amt="1000">₹1,000</button>
+        <button class="amt-btn" data-amt="2500">₹2,500</button>
+        <button class="amt-btn" data-amt="5000">₹5,000</button>
+      </div>
+      <div class="amt-custom">
+        <span>₹</span>
+        <input type="number" id="customAmt" placeholder="Or enter your own amount" min="1">
+      </div>
+      <button class="donate-cta" id="donateCta">Donate ₹1,000</button>
+      <p class="donate-note">You'll be taken to a secure payment page to complete your donation by card, UPI, or net banking.</p>
+      <div class="upi-line">
+        Prefer UPI directly? Send to <b>monazi@upi</b> and drop us a line at <a href="mailto:Info@monazi.in">Info@monazi.in</a> with your name so we can list it below.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="foot-mark">Monazi Foundation</div>
+      <p style="margin-top:8px; max-width:320px;">Help that reaches who it's for.</p>
+    </div>
+    <div>
+      <p><a href="mailto:Info@monazi.in">Info@monazi.in</a></p>
+      <p>© 2026 Monazi Foundation</p>
+    </div>
+  </div>
+</footer>
+
 <script>
-  let player;
-  let isPlaying = false;
-  let currentList = document.querySelector('.rot-btn.active').dataset.list;
+  const amtButtons = document.querySelectorAll('.amt-btn');
+  const customInput = document.getElementById('customAmt');
+  const cta = document.getElementById('donateCta');
+  let selected = 1000;
 
-  function onYouTubeIframeAPIReady(){
-    player = new YT.Player('yt-audio', {
-      height: '1', width: '1',
-      playerVars: {
-        listType: 'playlist',
-        list: currentList,
-        autoplay: 0,
-        controls: 0
-      },
-      events: {
-        'onReady': function(){},
-        'onStateChange': onPlayerStateChange
-      }
-    });
+  function updateCta(){
+    cta.textContent = 'Donate ₹' + Number(selected).toLocaleString('en-IN');
   }
 
-  function onPlayerStateChange(e){
-    // no-op hook for future now-playing title sync
-  }
-
-  const playBtn = document.getElementById('playBtn');
-  const playIcon = document.getElementById('playIcon');
-  const pauseIcon = document.getElementById('pauseIcon');
-
-  playBtn.addEventListener('click', () => {
-    if(!player || !player.playVideo){ return; }
-    if(isPlaying){
-      player.pauseVideo();
-      playIcon.style.display = 'block';
-      pauseIcon.style.display = 'none';
-      playBtn.setAttribute('aria-label','Play radio');
-    } else {
-      player.playVideo();
-      playIcon.style.display = 'none';
-      pauseIcon.style.display = 'block';
-      playBtn.setAttribute('aria-label','Pause radio');
-    }
-    isPlaying = !isPlaying;
-  });
-
-  document.querySelectorAll('.rot-btn').forEach(btn => {
+  amtButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.rot-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('rotTitle').textContent = btn.dataset.title;
-      currentList = btn.dataset.list;
-      if(player && player.loadPlaylist){
-        player.loadPlaylist({list: currentList});
-        if(isPlaying){ player.playVideo(); }
-      }
+      amtButtons.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      customInput.value = '';
+      selected = btn.dataset.amt;
+      updateCta();
     });
   });
 
-  // Gentle, believable drift in the listener count — cosmetic only.
-  const listenerEl = document.getElementById('listenerCount');
-  let count = 142;
-  setInterval(() => {
-    const delta = Math.floor(Math.random() * 5) - 2;
-    count = Math.max(38, count + delta);
-    listenerEl.textContent = count;
-  }, 4000);
+  customInput.addEventListener('input', () => {
+    if(customInput.value){
+      amtButtons.forEach(b => b.classList.remove('selected'));
+      selected = customInput.value;
+      updateCta();
+    }
+  });
+
+  cta.addEventListener('click', () => {
+    // Placeholder: replace this with your payment gateway link/checkout call.
+    alert('Payment gateway not yet connected. See the setup notes for how to wire this button to Razorpay, Instamojo, or PayPal.');
+  });
 </script>
 
 </body>
